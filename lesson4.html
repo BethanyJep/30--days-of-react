@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello world</title>
+    <!-- Script tags including React -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/reactdom.min.js"></script> -->
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="lesson4.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+      class Header extends React.Component {
+        render() {
+          return (
+            <div className="header">
+              <div className="fa fa-more"></div>
+              <span className="title">Timeline</span>
+              <input
+                type="text"
+                className="searchInput"
+                placeholder="Search ..."
+              />
+              <div className="fa fa-search searchIcon"></div>
+            </div>
+          );
+        }
+      }
+
+      class Content extends React.Component {
+        render() {
+          return (
+            <div className="content">
+              <div className="line"></div>
+              {/* Timeline item */}
+              <div className="item">
+                <div className="avatar">
+                  <img
+                    alt="Doug"
+                    src="http://www.croop.cl/UI/twitter/images/doug.jpg"
+                  />
+                  Doug
+                </div>
+                <span className="time">An hour ago</span>
+                <p>Ate lunch</p>
+                <div className="commentCount">2</div>
+              </div>
+            </div>
+          );
+        }
+      }
+
+      class App extends React.Component {
+        render() {
+          return (
+            <div className="notificationsFrame">
+              <div className="panel">
+                <Header />
+                <Content />
+              </div>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, document.querySelector('#app'));
+    </script>
+  </body>
+</html>
