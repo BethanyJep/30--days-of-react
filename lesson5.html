@@ -12,12 +12,12 @@
     <link rel="stylesheet" href="lesson4.css" />
   </head>
   <body>
-    <!-- <div id="app"></div> -->
+    <!-- <div id="app"></div>
     <div class="demo">
       <div class="notificationsFrame">
         <div id="app"></div>
       </div>
-    </div>
+    </div> -->
     <script type="text/babel">
       class Content extends React.Component {
         constructor(props) {
@@ -92,23 +92,31 @@
 
       class Header extends React.Component {
         render() {
+          const wrapperStyle = {
+            backgroundColor: "rgba(251, 202, 43, 1)"
+          };
+          const titleStyle = {
+            color: "#111111"
+          };
+          const menuColor = {
+            backgroundColor: "#111111"
+          };
           return (
-            <div className="header">
+            <div style={wrapperStyle} className="header">
               <div className="menuIcon">
-                <div className="dashTop"></div>
-                <div className="dashBottom"></div>
-                <div className="circle"></div>
+                <div className="dashTop" style={menuColor}></div>
+                <div className="dashBottom" style={menuColor}></div>
+                <div className="circle" style={menuColor}></div>
               </div>
-
-              <span className="title">{this.props.title}</span>
-
+              <span style={titleStyle} className="title">
+                {this.props.title}
+              </span>
               <input
                 type="text"
                 className="searchInput"
                 placeholder="Search ..."
               />
-
-              <div className="fa fa-search searchIcon"></div>
+              <div style={titleStyle} className="fa fa-search searchIcon"></div>
             </div>
           );
         }

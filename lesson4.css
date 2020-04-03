@@ -47,7 +47,7 @@
 .notificationsFrame .header {
 	position: relative;
 	height: 60px;
-	background: #5f98cd;
+	background: rgba(251, 202, 43, 1);
 	padding-top: 0;
 }
 
@@ -72,7 +72,7 @@
 	height: 3px;
 	top: 0;
 	left: 0;
-	background: #b2daff;
+	background-color: #333333; 
 	border-radius: 3px;
 	-webkit-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
@@ -84,7 +84,7 @@
 	height: 3px;
 	top: 0;
 	left: 0;
-	background: #b2daff;
+	background-color: #333333; 
 	border-radius: 3px;
 	-webkit-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
@@ -108,7 +108,7 @@
 .notificationsFrame .header .title {
 	display: block;
 	text-align: center;
-	color: #fff;
+	color: #333333; 
 	font-weight: 600;
 	font-size: 15px;
 	padding-top: 20px;
@@ -118,7 +118,7 @@
 	position: absolute;
 	z-index: 3;
 	font-size: 21px;
-	color: #fff;
+    color: #333333; 
 	top: 18px;
 	right: 20px;
 	-webkit-transition: all 0.3s ease;

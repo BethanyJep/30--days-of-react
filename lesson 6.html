@@ -14,6 +14,13 @@
   <body>
     <div id="app"></div>
     <script type="text/babel">
+      import PropTypes from "prop-types";
+      class Header extends React.Component {
+        // ...
+      }
+      Header.defaultProps = {
+        title: "Github activity"
+      };
       class Clock extends React.Component {
         constructor(props) {
           super(props);
@@ -48,6 +55,12 @@
           );
         }
       }
+
+      Clock.propTypes = {
+        // key is the name of the prop and
+        // value is the PropType
+        displayEle: PropTypes.element
+      };
 
       ReactDOM.render(<Clock />, document.querySelector("#app"));
     </script>

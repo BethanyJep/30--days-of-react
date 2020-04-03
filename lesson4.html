@@ -15,21 +15,80 @@
     <div id="app"></div>
     <script type="text/babel">
       class Header extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            searchVisible: false
+          };
+        }
+
+        showSearch() {
+          this.setState({
+            searchVisible: !this.state.searchVisible
+          });
+        }
         render() {
+          // Classes to add to the <input /> element
+          let searchInputClasses = ["searchInput"];
+          // Update the class array if the state is visible
+          if (this.state.searchVisible) {
+            searchInputClasses.push("active");
+          }
+
           return (
             <div className="header">
-              <div className="fa fa-more"></div>
-              <span className="title">Timeline</span>
-              <input
-                type="text"
-                className="searchInput"
-                placeholder="Search ..."
-              />
-              <div className="fa fa-search searchIcon"></div>
+              <div className="menuIcon">
+                <div className="dashTop"></div>
+                <div className="dashBottom"></div>
+                <div className="circle"></div>
+              </div>
+              <span className="title">{this.props.title}</span>
+              <SearchForm searchVisible={this.state.searchVisible} />
+              {/* Adding an onClick handler to call the showSearch button
+               */}
+              <div
+                onClick={this.showSearch.bind(this)}
+                className="fa fa-search searchIcon"
+              ></div>
             </div>
           );
         }
       }
+
+      class SearchForm extends React.Component {
+        // ...
+        constructor(props) {
+          super(props);
+          this.state = {
+            searchText: ""
+          };
+        }
+        // ...
+        render() {
+          const { searchVisible } = this.props;
+          let searchClasses = ["searchInput"];
+          if (searchVisible) {
+            searchClasses.push("active");
+          }
+          return (
+            <form>
+              <input
+                type="search"
+                className={searchClasses.join(" ")}
+                placeholder="Search ..."
+              />
+            </form>
+          );
+        }
+      }
+
+      SearchForm.propTypes = {
+        searchVisible: PropTypes.bool
+      };
+
+      SearchForm.defaultProps = {
+        searchVisible: false
+      };
 
       class Content extends React.Component {
         render() {
@@ -67,7 +126,7 @@
         }
       }
 
-      ReactDOM.render(<App />, document.querySelector('#app'));
+      ReactDOM.render(<App />, document.querySelector("#app"));
     </script>
   </body>
 </html>
