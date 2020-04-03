@@ -21,7 +21,7 @@
             searchVisible: false
           };
         }
-
+        // toggle visibility when run on the state
         showSearch() {
           this.setState({
             searchVisible: !this.state.searchVisible
@@ -34,7 +34,6 @@
           if (this.state.searchVisible) {
             searchInputClasses.push("active");
           }
-
           return (
             <div className="header">
               <div className="menuIcon">
@@ -43,7 +42,12 @@
                 <div className="circle"></div>
               </div>
               <span className="title">{this.props.title}</span>
-              <SearchForm searchVisible={this.state.searchVisible} />
+              <input
+                type="text"
+                className={searchInputClasses.join(" ")}
+                placeholder="Search ..."
+              />
+              97
               {/* Adding an onClick handler to call the showSearch button
                */}
               <div
@@ -64,8 +68,15 @@
           };
         }
         // ...
+        updateSearchInput(e) {
+          const val = e.target.value;
+          this.setState({
+            searchText: val
+          });
+        }
+        // ...
         render() {
-          const { searchVisible } = this.props;
+          const { searchVisible } = this.state;
           let searchClasses = ["searchInput"];
           if (searchVisible) {
             searchClasses.push("active");
@@ -75,6 +86,7 @@
               <input
                 type="search"
                 className={searchClasses.join(" ")}
+                onChange={this.updateSearchInput.bind(this)}
                 placeholder="Search ..."
               />
             </form>
@@ -89,6 +101,32 @@
       SearchForm.defaultProps = {
         searchVisible: false
       };
+      class Panel extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            activities: data
+          };
+        }
+        // ...
+        handleSearch(val) {
+          // resets the data if the search value is empty
+          if (val === "") {
+            this.setState({
+              activities: data
+            });
+          } else {
+            const { activities } = this.state;
+            const filtered = activities.filter(
+              a => a.actor && a.actor.login.match(val)
+            );
+            this.setState({
+              activities: filtered
+            });
+          }
+        }
+        // ...
+      }
 
       class Content extends React.Component {
         render() {
